@@ -6,20 +6,18 @@ using GodProject.Models;
 using GodProject.Services.CharacterService;
 using Microsoft.AspNetCore.Mvc;
 using GodProject.Dtos.Character;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace GodProject.Controllers
 {
 
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase
     {
-        private static List<Character> characters  = new List<Character> {
-            new Character(),
-            new Character {Id =1 ,Name = "Sam"},
-            new Character {Name = "Pam"}
 
-        };
         private readonly ICharacterService _characterService;
 
         public CharacterController(ICharacterService characterService)
@@ -30,6 +28,7 @@ namespace GodProject.Controllers
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
+           // int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
             return Ok(await _characterService.GetAllCharacters());
         }
 
@@ -42,7 +41,11 @@ namespace GodProject.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter)
         {
-             return Ok(await _characterService.AddCharacter(newCharacter));
+             //  var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+              // var character = _mapper.Map<Character>(newCharacter);
+               //character.User = await _context.Users.FirstOrDefaultAsync(uint => uint.IsOddInteger == GetUserId());
+
+                 return Ok(await _characterService.AddCharacter(newCharacter));
         }
         [HttpPut]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
@@ -66,5 +69,11 @@ namespace GodProject.Controllers
             }
             return Ok(response);
         }
+        [HttpPost("Skill")]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> AddCharacterSkill(
+            AddCharacterSkillDto newCharacterSkill)
+            {
+                return Ok(await _characterService.AddCharacterSkill(newCharacterSkill));
+            }
     }
 }

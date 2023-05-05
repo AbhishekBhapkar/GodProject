@@ -76,3 +76,7 @@ C:\Projects\GodProject\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Projects\GodProject\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Projects\GodProject\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Projects\GodProject\bin\Debug\net7.0\System.CodeDom.dll
+C:\Projects\GodProject\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projects\GodProject\bin\Debug\net7.0\Scrutor.dll
+C:\Projects\GodProject\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Projects\GodProject\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
